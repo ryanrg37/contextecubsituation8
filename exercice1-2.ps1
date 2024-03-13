@@ -7,4 +7,4 @@
 #COMMENTS: liste les processus "SVCHOST"
 #
 #=============================================================================================
-Get-Process -Name svchost 
+Get-Process -Name svchost | Format-Table "Id","ProcessName"

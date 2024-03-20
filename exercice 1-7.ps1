@@ -4,7 +4,7 @@
 #DATE: 20/03/2024
 #
 #Version 1.0
-#COMMENTS: liste les processus "SVCHOST"
+#COMMENTS: enregistre les resultat dans un fichier txt et csv
 #
 #=============================================================================================
 #fonction
@@ -18,4 +18,4 @@ function Get-StartedServices {
 $startedServices = Get-StartedServices
 
 # Exportation des informations dans un fichier CSV
-$startedServices | Export-Csv -Path "C:\service.csv" -NoTypeInformation
+$startedServices | Export-Csv -Path "C:\service.csv" -NoTypeInformation -Encoding utf8

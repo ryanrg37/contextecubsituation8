@@ -4,7 +4,7 @@
 #DATE: 20/03/2024
 #
 #Version 1.0
-#COMMENTS: liste les processus "SVCHOST"
+#COMMENTS: exporte les processus demarer ou arreter 
 #
 #=============================================================================================
 #fonction

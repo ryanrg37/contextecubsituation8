@@ -8,14 +8,23 @@
 #
 #=============================================================================================
 #fonction 
-function infoprocess ($processus)
-{
+function infoprocess {
+    param($processusName)
 
-$result = Get-Process -Name *$processus* | Format-Table "Id","ProcessName","description" 
-$result | Out-File "C:\sauvgarde.txt"
-$result | Export-csv -path C:\sauvgarde.csv -NoTypeInformation
+    Write-Host "Affichage des processus contenant : $processusName"
+    $processus = Get-Process | Where-Object { $_.ProcessName -like "*$processusName*" }
+     # Exportation vers un fichier texte
+    $processus | Format-Table ID, Name, Description | Out-File "C:\sauvgarde.txt" -Encoding utf8
+    
+    # Exportation vers un fichier CSV
+    $processus | Select-Object ID, Name, Description | Export-Csv -Path "C:\sauvgarde.csv" -NoTypeInformation
 }
-#demande a l'utilisateur de renter un processus
-$processus = read-host "entrez le nom d'un processuce"
-#donne le resultat de la fonction 
-infoprocess ($processus)
+
+
+# Demande à l'utilisateur de saisir un processus
+$processusName = Read-Host "Entrez le nom d'un processus"
+
+# Appelle la fonction infoprocess avec le nom du processus
+infoprocess -processusName $processusName
+
+
